@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ogi Music</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <script
+      src="https://kit.fontawesome.com/3a06e39fa4.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="grid-container">
+      <div class="search-box grid-item">
+        <input type="text" placeholder="search..." /><i
+          class="fa-solid fa-magnifying-glass"
+        ></i>
+      </div>
+      <div class="container-list grid-item">
+        Album
+        <div class="album-list">
+          <div class="album active">
+            <div class="album-cover">
+              <img src="assets/images/album-default.jpg" />
+            </div>
+            <div class="album-text">
+              <span class="album-title">All Songs</span>
+              <span class="album-band">Songs of All Band</span>
+            </div>
+          </div>
+        </div>
+        Song
+        <div class="song-list">
+          <div class="song">
+            <div class="song-cover">
+              <img src="assets/images/album-4.jpg" />
+            </div>
+            <div class="song-text">
+              <span class="song-title">A Time To Remember</span>
+              <span class="song-singer">The Blocking Stone</span>
+            </div>
+          </div>
+        </div>
+        <div class="container-song">
+          <div class="song-details">
+            <div class="sond-details-nav">back</div>
+            <div class="song-details-cover">
+              <img src="assets/images/album-7.jpg" />
+            </div>
+            <div class="song-details-text">
+              <span class="song-details-title">Action Scene</span>
+              <span class="song-details-band">Rock The Rock</span>
+              <audio class="current-song" preload="metadata">
+                <source
+                  src="assets/music/Conquer The Success Peaks.wav"
+                  type="audio/wav"
+                />
+              </audio>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-player">
+      <div class="main-player">
+        <input type="range" value="0" class="progress-player" />
+        <div class="nav-player">
+          <div class="details-player">a</div>
+          <div class="buttons-player">
+            <span class="prev-button">
+              <i class="fa-solid fa-backward-step"></i>
+            </span>
+            <span onclick="playPause()" class="play-button">
+              <i class="fa-solid fa-play play-button-icon"></i>
+            </span>
+            <span class="next-button">
+              <i class="fa-solid fa-forward-step"></i>
+            </span>
+          </div>
+          <div class="volume-player">
+            <span><i class="fa-solid fa-volume"></i>c</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,92 @@
+[
+  {
+    "title": "A Time To Remember",
+    "band": "The Blocking Stone",
+    "album": "Time",
+    "coverAlbum": "album-1.jpg",
+    "year": "2022",
+    "genre": "Pop",
+    "fileName": "A Time To Remember.wav"
+  },
+  {
+    "title": "Action Scene",
+    "band": "Rock The Rock",
+    "album": "Adventure Precision",
+    "coverAlbum": "album-4.jpg",
+    "year": "2020",
+    "genre": "Rock",
+    "fileName": "Action Scene.wav"
+  },
+  {
+    "title": "Calling A Hero",
+    "band": "The Blocking Stone",
+    "album": "Hero",
+    "coverAlbum": "album-2.jpg",
+    "year": "2018",
+    "genre": "Pop",
+    "fileName": "Calling A Hero.wav"
+  },
+  {
+    "title": "Conquer The Success Peaks",
+    "band": "Circle and Center",
+    "album": "Memory",
+    "coverAlbum": "album-7.jpg",
+    "year": "2020",
+    "genre": "Pop",
+    "fileName": "Conquer The Success Peaks.wav"
+  },
+  {
+    "title": "Extreme Power",
+    "band": "Rock The Rock",
+    "album": "Adventure Precision",
+    "coverAlbum": "album-4.jpg",
+    "year": "2020",
+    "genre": "Rock",
+    "fileName": "Extreme Power.wav"
+  },
+  {
+    "title": "Modern Interior",
+    "band": "My Liquid Romance",
+    "album": "The Living",
+    "coverAlbum": "album-3.jpg",
+    "year": "2019",
+    "genre": "Jazz",
+    "fileName": "Modern Interior.wav"
+  },
+  {
+    "title": "Positive Days",
+    "band": "Rock The Rock",
+    "album": "Vibes",
+    "coverAlbum": "album-5.jpg",
+    "year": "2017",
+    "genre": "Metal",
+    "fileName": "Positive Days.wav"
+  },
+  {
+    "title": "Punch Of Hope",
+    "band": "Wild City",
+    "album": "Hope",
+    "coverAlbum": "album-6.jpg",
+    "year": "2023",
+    "genre": "Indie",
+    "fileName": "Punch of Hope.wav"
+  },
+  {
+    "title": "The Parting",
+    "band": "Wild City",
+    "album": "Hope",
+    "coverAlbum": "album-6.jpg",
+    "year": "2023",
+    "genre": "Indie",
+    "fileName": "The Parting.wav"
+  },
+  {
+    "title": "Vinyl Memories",
+    "band": "Circle and Center",
+    "album": "Memory",
+    "coverAlbum": "album-7.jpg",
+    "year": "2020",
+    "genre": "Pop",
+    "fileName": "Vinyl Memories"
+  }
+]
