@@ -1,15 +1,30 @@
 const elAlbumList = document.querySelector(".album-list");
 const elSongList = document.querySelector(".song-list");
 
-//Fetch all song from songs.json
-fetch("./json/songs.json")
-  .then((response) => response.json())
-  .then((json) => {
-    getAlbumList(json);
-    json.forEach((song) => {
-      showSong(song);
+//Function to fetch data from songs.json and do the callback
+function fetchSongs(callback, filterAlbum, album, isClickedAllSongs) {
+  fetch("./json/songs.json")
+    .then((response) => response.json())
+    .then((json) => {
+      if (!filterAlbum) {
+        if (!isClickedAllSongs) {
+          getAlbumList(json);
+        }
+        json.forEach((song) => {
+          callback(song);
+        });
+      } else {
+        json.forEach((song) => {
+          if (song.album === album) {
+            callback(song);
+          }
+        });
+      }
     });
-  });
+}
+
+//Run fetchSongs to show all songs
+fetchSongs(showSong, false);
 
 //Function to get all album list from songs.json
 function getAlbumList(json) {
@@ -47,6 +62,7 @@ function showAlbum(albums, coverAlbums, bands) {
     let textAlbumBand = document.createTextNode(bands[i]);
 
     elAlbum.classList.add("album");
+    elAlbum.setAttribute("album-title", albums[i]);
     elAlbumCover.classList.add("album-cover");
     elAlbumText.classList.add("album-text");
     spanAlbumTitle.classList.add("album-title");
@@ -62,6 +78,8 @@ function showAlbum(albums, coverAlbums, bands) {
     elAlbum.appendChild(elAlbumText);
 
     elAlbumList.appendChild(elAlbum);
+
+    elAlbum.addEventListener("click", loadSongByAlbum);
   }
 }
 
@@ -77,6 +95,10 @@ function showSong(song) {
   let textSongBand = document.createTextNode(song.band);
 
   elSong.classList.add("song");
+  elSong.setAttribute("song-title", song.title);
+  elSong.setAttribute("song-band", song.band);
+  elSong.setAttribute("song-cover-album", song.coverAlbum);
+  elSong.setAttribute("song-file-name", song.fileName);
   elSongCover.classList.add("song-cover");
   elSongText.classList.add("song-text");
   spanSongTitle.classList.add("song-title");
@@ -92,13 +114,42 @@ function showSong(song) {
   elSong.appendChild(elSongText);
 
   elSongList.appendChild(elSong);
+
+  elSong.addEventListener("click", openSongContainer);
+}
+
+function loadAllSongs() {
+  let allSong = document.querySelector(".all-song");
+  let allAlbum = document.querySelectorAll(".album");
+  allAlbum.forEach((album) => {
+    if (album.classList.contains("active")) {
+      album.classList.remove("active");
+    }
+  });
+  allSong.classList.add("active");
+
+  elSongList.innerHTML = "";
+  fetchSongs(showSong, false, "", true);
+}
+
+function loadSongByAlbum() {
+  let allAlbum = document.querySelectorAll(".album");
+  allAlbum.forEach((album) => {
+    if (album.classList.contains("active")) {
+      album.classList.remove("active");
+    }
+  });
+  this.classList.add("active");
+
+  elSongList.innerHTML = "";
+  let albumTitle = this.getAttribute("album-title");
+  fetchSongs(showSong, true, albumTitle);
+  console.log("album-title: " + this.getAttribute("album-title"));
 }
 
 let progressPlayer = document.querySelector(".progress-player");
 let currentSong = document.querySelector(".current-song");
 let playButtonIcon = document.querySelector(".play-button-icon");
-
-console.log(progressPlayer);
 
 currentSong.onloadedmetadata = function () {
   console.log(currentSong.duration);
@@ -127,3 +178,42 @@ if (currentSong.play()) {
 progressPlayer.onchange = function () {
   currentSong.currentTime = progressPlayer.value;
 };
+
+function openSongContainer() {
+  const containerSong = document.querySelector(".container-song");
+  const currentSong = document.querySelector(".current-song");
+  const sourceSong = document.querySelector(".source-song");
+  const songDetailsCoverImg = document.querySelector(".song-details-cover-img");
+  const songDetailsTitle = document.querySelector(".song-details-title");
+  const songDetailsBand = document.querySelector(".song-details-band");
+
+  containerSong.style.display = "flex";
+  sourceSong.setAttribute(
+    "src",
+    `assets/music/${this.getAttribute("song-file-name")}`
+  );
+  currentSong.load();
+  songDetailsCoverImg.setAttribute(
+    "src",
+    `assets/images/${this.getAttribute("song-cover-album")}`
+  );
+  songDetailsTitle.innerHTML = this.getAttribute("song-title");
+  songDetailsBand.innerHTML = this.getAttribute("song-band");
+
+  setSongActive(this);
+}
+
+function setSongActive(songSelected) {
+  let allSong = document.querySelectorAll(".song");
+  allSong.forEach((song) => {
+    if (song.classList.contains("active")) {
+      song.classList.remove("active");
+    }
+  });
+  songSelected.classList.add("active");
+}
+
+function closeSongContainer() {
+  const containerSong = document.querySelector(".container-song");
+  containerSong.style.display = "none";
+}

@@ -19,9 +19,9 @@
         ></i>
       </div>
       <div class="container-list grid-item">
-        Album
+        <span class="album-list-label">Album</span>
         <div class="album-list">
-          <div class="album active">
+          <div onclick="loadAllSongs()" class="album all-song active">
             <div class="album-cover">
               <img src="assets/images/album-default.jpg" />
             </div>
@@ -31,9 +31,9 @@
             </div>
           </div>
         </div>
-        Song
+        <span class="song-list-label">Song</span>
         <div class="song-list">
-          <div class="song">
+          <!-- <div onclick="openSongContainer()" class="song">
             <div class="song-cover">
               <img src="assets/images/album-4.jpg" />
             </div>
@@ -41,20 +41,31 @@
               <span class="song-title">A Time To Remember</span>
               <span class="song-singer">The Blocking Stone</span>
             </div>
-          </div>
+          </div> -->
         </div>
         <div class="container-song">
           <div class="song-details">
-            <div class="sond-details-nav">back</div>
+            <div class="song-details-nav">
+              <span onclick="closeSongContainer()" class="close-song-details"
+                ><i class="fa-sharp fa-solid fa-arrow-left"></i
+              ></span>
+              <span class="menu-song-details"
+                ><i class="fa-solid fa-bars"></i
+              ></span>
+            </div>
             <div class="song-details-cover">
-              <img src="assets/images/album-7.jpg" />
+              <img
+                class="song-details-cover-img"
+                src="assets/images/album-1.jpg"
+              />
             </div>
             <div class="song-details-text">
-              <span class="song-details-title">Action Scene</span>
-              <span class="song-details-band">Rock The Rock</span>
+              <span class="song-details-title">A Time to Remember</span>
+              <span class="song-details-band">The Blocking Stone</span>
               <audio class="current-song" preload="metadata">
                 <source
-                  src="assets/music/Conquer The Success Peaks.wav"
+                  class="source-song"
+                  src="assets/music/A Time To Remember.wav"
                   type="audio/wav"
                 />
               </audio>
@@ -67,7 +78,7 @@
       <div class="main-player">
         <input type="range" value="0" class="progress-player" />
         <div class="nav-player">
-          <div class="details-player">a</div>
+          <div class="details-player"></div>
           <div class="buttons-player">
             <span class="prev-button">
               <i class="fa-solid fa-backward-step"></i>
@@ -80,7 +91,7 @@
             </span>
           </div>
           <div class="volume-player">
-            <span><i class="fa-solid fa-volume"></i>c</span>
+            <span></span>
           </div>
         </div>
       </div>
